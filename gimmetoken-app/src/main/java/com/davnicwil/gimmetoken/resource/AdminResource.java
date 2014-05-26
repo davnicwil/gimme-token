@@ -3,7 +3,7 @@ package com.davnicwil.gimmetoken.resource;
 import java.util.Set;
 
 import com.davnicwil.gimmetoken.client.AdminEndpoint;
-import com.davnicwil.gimmetoken.token.TokenManager;
+import com.davnicwil.gimmetoken.token.management.TokenManager;
 import com.google.inject.Inject;
 
 public class AdminResource implements AdminEndpoint {

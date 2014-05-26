@@ -1,8 +1,8 @@
-package com.davnicwil.gimmetoken.token.impl;
+package com.davnicwil.gimmetoken.token.management.impl;
 
-import com.davnicwil.gimmetoken.model.ExpiringTokenValue;
 import com.davnicwil.gimmetoken.time.Clock;
-import com.davnicwil.gimmetoken.token.TokenValueExpiryChecker;
+import com.davnicwil.gimmetoken.token.management.TokenValueExpiryChecker;
+import com.davnicwil.gimmetoken.token.storage.model.ExpiringTokenValue;
 
 public class TokenValueExpiryCheckerImpl implements TokenValueExpiryChecker {
 

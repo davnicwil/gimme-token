@@ -1,10 +1,10 @@
-package com.davnicwil.gimmetoken.token;
+package com.davnicwil.gimmetoken.token.management;
 
 import java.util.Set;
 
 import com.davnicwil.gimmetoken.model.Token;
-import com.davnicwil.gimmetoken.token.exception.TokenValueDoesNotExistException;
-import com.davnicwil.gimmetoken.token.exception.TokenValueExpiredException;
+import com.davnicwil.gimmetoken.token.management.exception.TokenValueDoesNotExistException;
+import com.davnicwil.gimmetoken.token.management.exception.TokenValueExpiredException;
 
 public interface TokenManager {
 

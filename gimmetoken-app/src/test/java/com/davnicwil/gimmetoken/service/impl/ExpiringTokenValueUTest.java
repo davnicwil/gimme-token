@@ -5,7 +5,7 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import com.davnicwil.gimmetoken.model.ExpiringTokenValue;
+import com.davnicwil.gimmetoken.token.storage.model.ExpiringTokenValue;
 
 public class ExpiringTokenValueUTest {
 

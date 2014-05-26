@@ -10,9 +10,9 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import com.davnicwil.gimmetoken.model.ExpiringTokenValue;
 import com.davnicwil.gimmetoken.time.Clock;
-import com.davnicwil.gimmetoken.token.impl.TokenValueExpiryCheckerImpl;
+import com.davnicwil.gimmetoken.token.management.impl.TokenValueExpiryCheckerImpl;
+import com.davnicwil.gimmetoken.token.storage.model.ExpiringTokenValue;
 
 @RunWith(MockitoJUnitRunner.class)
 public class TokenValueExpiryCheckerImplUTest {

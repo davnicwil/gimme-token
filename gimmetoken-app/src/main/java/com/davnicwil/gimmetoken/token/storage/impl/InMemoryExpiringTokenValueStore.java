@@ -1,21 +1,23 @@
-package com.davnicwil.gimmetoken.model;
+package com.davnicwil.gimmetoken.token.storage.impl;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-import com.davnicwil.gimmetoken.token.exception.TokenValueDoesNotExistException;
+import com.davnicwil.gimmetoken.token.management.exception.TokenValueDoesNotExistException;
+import com.davnicwil.gimmetoken.token.storage.ExpiringTokenValueStore;
+import com.davnicwil.gimmetoken.token.storage.model.ExpiringTokenValue;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Maps;
 
-public class ExpiringTokenValueStore {
+public class InMemoryExpiringTokenValueStore implements ExpiringTokenValueStore {
 
 	private Map<String, ExpiringTokenValue> tokens;
 	
-	public ExpiringTokenValueStore() {
+	public InMemoryExpiringTokenValueStore() {
 		tokens = new HashMap<String, ExpiringTokenValue>();
 	}
-	
+
 	public void put(String key, ExpiringTokenValue value) {
 		tokens.put(key, value);
 	}

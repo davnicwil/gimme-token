@@ -1,16 +1,16 @@
-package com.davnicwil.gimmetoken.token.impl;
+package com.davnicwil.gimmetoken.token.management.impl;
 
 import java.util.Set;
 
-import com.davnicwil.gimmetoken.model.ExpiringTokenValue;
-import com.davnicwil.gimmetoken.model.ExpiringTokenValueStore;
 import com.davnicwil.gimmetoken.model.Token;
-import com.davnicwil.gimmetoken.model.builder.ExpiringTokenValueBuilder;
-import com.davnicwil.gimmetoken.token.ExpiringTokenValueStoreInspector;
-import com.davnicwil.gimmetoken.token.TokenManager;
-import com.davnicwil.gimmetoken.token.TokenValueExpiryChecker;
-import com.davnicwil.gimmetoken.token.exception.TokenValueDoesNotExistException;
-import com.davnicwil.gimmetoken.token.exception.TokenValueExpiredException;
+import com.davnicwil.gimmetoken.token.management.TokenManager;
+import com.davnicwil.gimmetoken.token.management.TokenValueExpiryChecker;
+import com.davnicwil.gimmetoken.token.management.exception.TokenValueDoesNotExistException;
+import com.davnicwil.gimmetoken.token.management.exception.TokenValueExpiredException;
+import com.davnicwil.gimmetoken.token.storage.ExpiringTokenValueStore;
+import com.davnicwil.gimmetoken.token.storage.ExpiringTokenValueStoreInspector;
+import com.davnicwil.gimmetoken.token.storage.model.ExpiringTokenValue;
+import com.davnicwil.gimmetoken.token.storage.model.builder.ExpiringTokenValueBuilder;
 import com.google.inject.Inject;
 
 public class TokenManagerImpl implements TokenManager {

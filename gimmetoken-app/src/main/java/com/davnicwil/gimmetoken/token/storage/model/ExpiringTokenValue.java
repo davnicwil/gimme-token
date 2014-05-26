@@ -1,4 +1,4 @@
-package com.davnicwil.gimmetoken.model;
+package com.davnicwil.gimmetoken.token.storage.model;
 
 public class ExpiringTokenValue {
 

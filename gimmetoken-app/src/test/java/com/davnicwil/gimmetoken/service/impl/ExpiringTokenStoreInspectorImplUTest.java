@@ -12,10 +12,11 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import com.davnicwil.gimmetoken.model.ExpiringTokenValue;
-import com.davnicwil.gimmetoken.model.ExpiringTokenValueStore;
-import com.davnicwil.gimmetoken.token.TokenValueExpiryChecker;
-import com.davnicwil.gimmetoken.token.impl.ExpiringTokenStoreInspectorImpl;
+import com.davnicwil.gimmetoken.token.management.TokenValueExpiryChecker;
+import com.davnicwil.gimmetoken.token.storage.ExpiringTokenValueStore;
+import com.davnicwil.gimmetoken.token.storage.impl.ExpiringTokenValueStoreInspectorImpl;
+import com.davnicwil.gimmetoken.token.storage.impl.InMemoryExpiringTokenValueStore;
+import com.davnicwil.gimmetoken.token.storage.model.ExpiringTokenValue;
 
 @RunWith(MockitoJUnitRunner.class)
 public class ExpiringTokenStoreInspectorImplUTest {
@@ -37,8 +38,8 @@ public class ExpiringTokenStoreInspectorImplUTest {
 	
 	@Test
 	public void givenOnlyExpiredTokensItShouldGetTheExpiredTokens() {
-		ExpiringTokenStoreInspectorImpl testObj = new ExpiringTokenStoreInspectorImpl(tokenValueExpiryChecker);
-		ExpiringTokenValueStore expiringTokenValueStore = new ExpiringTokenValueStore();
+		ExpiringTokenValueStoreInspectorImpl testObj = new ExpiringTokenValueStoreInspectorImpl(tokenValueExpiryChecker);
+		ExpiringTokenValueStore expiringTokenValueStore = new InMemoryExpiringTokenValueStore();
 		expiringTokenValueStore.put("one", EXPIRED_TOKEN_VALUE_1);
 		expiringTokenValueStore.put("two", EXPIRED_TOKEN_VALUE_2);
 		
@@ -51,8 +52,8 @@ public class ExpiringTokenStoreInspectorImplUTest {
 	
 	@Test
 	public void givenNoExpiredTokensItShouldGetNoExpiredTokens() {
-		ExpiringTokenStoreInspectorImpl testObj = new ExpiringTokenStoreInspectorImpl(tokenValueExpiryChecker);
-		ExpiringTokenValueStore expiringTokenValueStore = new ExpiringTokenValueStore();
+		ExpiringTokenValueStoreInspectorImpl testObj = new ExpiringTokenValueStoreInspectorImpl(tokenValueExpiryChecker);
+		ExpiringTokenValueStore expiringTokenValueStore = new InMemoryExpiringTokenValueStore();
 		expiringTokenValueStore.put("one", ACTIVE_TOKEN_VALUE_1);
 		
 		Set<String> expiredTokenKeys = testObj.getAllExpiredTokenKeys(expiringTokenValueStore);
@@ -62,8 +63,8 @@ public class ExpiringTokenStoreInspectorImplUTest {
 	
 	@Test
 	public void givenAMixOfExpiredAndActiveTokensItShouldGetTheExpiredTokens() {
-		ExpiringTokenStoreInspectorImpl testObj = new ExpiringTokenStoreInspectorImpl(tokenValueExpiryChecker);
-		ExpiringTokenValueStore expiringTokenValueStore = new ExpiringTokenValueStore();
+		ExpiringTokenValueStoreInspectorImpl testObj = new ExpiringTokenValueStoreInspectorImpl(tokenValueExpiryChecker);
+		ExpiringTokenValueStore expiringTokenValueStore = new InMemoryExpiringTokenValueStore();
 		expiringTokenValueStore.put("one", ACTIVE_TOKEN_VALUE_1);
 		expiringTokenValueStore.put("two", ACTIVE_TOKEN_VALUE_2);
 		expiringTokenValueStore.put("three", EXPIRED_TOKEN_VALUE_1);
@@ -78,8 +79,8 @@ public class ExpiringTokenStoreInspectorImplUTest {
 	
 	@Test
 	public void givenOnlyActiveTokensItShouldGetTheActiveTokens() {
-		ExpiringTokenStoreInspectorImpl testObj = new ExpiringTokenStoreInspectorImpl(tokenValueExpiryChecker);
-		ExpiringTokenValueStore expiringTokenValueStore = new ExpiringTokenValueStore();
+		ExpiringTokenValueStoreInspectorImpl testObj = new ExpiringTokenValueStoreInspectorImpl(tokenValueExpiryChecker);
+		ExpiringTokenValueStore expiringTokenValueStore = new InMemoryExpiringTokenValueStore();
 		expiringTokenValueStore.put("one", ACTIVE_TOKEN_VALUE_1);
 		expiringTokenValueStore.put("two", ACTIVE_TOKEN_VALUE_2);
 		
@@ -92,8 +93,8 @@ public class ExpiringTokenStoreInspectorImplUTest {
 	
 	@Test
 	public void givenNoActiveTokensItShouldGetNoActiveTokens() {
-		ExpiringTokenStoreInspectorImpl testObj = new ExpiringTokenStoreInspectorImpl(tokenValueExpiryChecker);
-		ExpiringTokenValueStore expiringTokenValueStore = new ExpiringTokenValueStore();
+		ExpiringTokenValueStoreInspectorImpl testObj = new ExpiringTokenValueStoreInspectorImpl(tokenValueExpiryChecker);
+		ExpiringTokenValueStore expiringTokenValueStore = new InMemoryExpiringTokenValueStore();
 		expiringTokenValueStore.put("one", EXPIRED_TOKEN_VALUE_1);
 		
 		Set<String> activeTokenKeys = testObj.getAllActiveTokenKeys(expiringTokenValueStore);
@@ -103,8 +104,8 @@ public class ExpiringTokenStoreInspectorImplUTest {
 	
 	@Test
 	public void givenAMixOfExpiredAndActiveTokensItShouldGetTheActiveTokens() {
-		ExpiringTokenStoreInspectorImpl testObj = new ExpiringTokenStoreInspectorImpl(tokenValueExpiryChecker);
-		ExpiringTokenValueStore expiringTokenValueStore = new ExpiringTokenValueStore();
+		ExpiringTokenValueStoreInspectorImpl testObj = new ExpiringTokenValueStoreInspectorImpl(tokenValueExpiryChecker);
+		ExpiringTokenValueStore expiringTokenValueStore = new InMemoryExpiringTokenValueStore();
 		expiringTokenValueStore.put("one", ACTIVE_TOKEN_VALUE_1);
 		expiringTokenValueStore.put("two", ACTIVE_TOKEN_VALUE_2);
 		expiringTokenValueStore.put("three", EXPIRED_TOKEN_VALUE_1);

@@ -1,4 +1,4 @@
-package com.davnicwil.gimmetoken.token.exception;
+package com.davnicwil.gimmetoken.token.management.exception;
 
 public class TokenValueExpiredException extends Exception {
 

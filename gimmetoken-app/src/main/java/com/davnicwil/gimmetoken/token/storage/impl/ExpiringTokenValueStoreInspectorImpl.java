@@ -1,21 +1,21 @@
-package com.davnicwil.gimmetoken.token.impl;
+package com.davnicwil.gimmetoken.token.storage.impl;
 
 import java.util.Set;
 
-import com.davnicwil.gimmetoken.model.ExpiringTokenValue;
-import com.davnicwil.gimmetoken.model.ExpiringTokenValueStore;
-import com.davnicwil.gimmetoken.token.ExpiringTokenValueStoreInspector;
-import com.davnicwil.gimmetoken.token.TokenValueExpiryChecker;
+import com.davnicwil.gimmetoken.token.management.TokenValueExpiryChecker;
+import com.davnicwil.gimmetoken.token.storage.ExpiringTokenValueStore;
+import com.davnicwil.gimmetoken.token.storage.ExpiringTokenValueStoreInspector;
+import com.davnicwil.gimmetoken.token.storage.model.ExpiringTokenValue;
 import com.google.common.base.Predicate;
 import com.google.inject.Inject;
 
-public class ExpiringTokenStoreInspectorImpl implements ExpiringTokenValueStoreInspector {
+public class ExpiringTokenValueStoreInspectorImpl implements ExpiringTokenValueStoreInspector {
 
 	private Predicate<ExpiringTokenValue> isExpired;
 	private Predicate<ExpiringTokenValue> isActive;
 	
 	@Inject
-	public ExpiringTokenStoreInspectorImpl(TokenValueExpiryChecker tokenValueExpiryChecker) {
+	public ExpiringTokenValueStoreInspectorImpl(TokenValueExpiryChecker tokenValueExpiryChecker) {
 		this.isExpired = buildIsExpiredPredicate(true, tokenValueExpiryChecker);
 		this.isActive = buildIsExpiredPredicate(false, tokenValueExpiryChecker);
 	}

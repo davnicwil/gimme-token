@@ -1,8 +1,7 @@
-package com.davnicwil.gimmetoken.token;
+package com.davnicwil.gimmetoken.token.storage;
 
 import java.util.Set;
 
-import com.davnicwil.gimmetoken.model.ExpiringTokenValueStore;
 
 public interface ExpiringTokenValueStoreInspector {
 

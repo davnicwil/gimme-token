@@ -6,15 +6,15 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import com.davnicwil.gimmetoken.model.ExpiringTokenValue;
-import com.davnicwil.gimmetoken.model.ExpiringTokenValueStore;
 import com.davnicwil.gimmetoken.model.Token;
-import com.davnicwil.gimmetoken.model.builder.ExpiringTokenValueBuilder;
-import com.davnicwil.gimmetoken.token.ExpiringTokenValueStoreInspector;
-import com.davnicwil.gimmetoken.token.TokenValueExpiryChecker;
-import com.davnicwil.gimmetoken.token.exception.TokenValueDoesNotExistException;
-import com.davnicwil.gimmetoken.token.exception.TokenValueExpiredException;
-import com.davnicwil.gimmetoken.token.impl.TokenManagerImpl;
+import com.davnicwil.gimmetoken.token.management.TokenValueExpiryChecker;
+import com.davnicwil.gimmetoken.token.management.exception.TokenValueDoesNotExistException;
+import com.davnicwil.gimmetoken.token.management.exception.TokenValueExpiredException;
+import com.davnicwil.gimmetoken.token.management.impl.TokenManagerImpl;
+import com.davnicwil.gimmetoken.token.storage.ExpiringTokenValueStore;
+import com.davnicwil.gimmetoken.token.storage.ExpiringTokenValueStoreInspector;
+import com.davnicwil.gimmetoken.token.storage.model.ExpiringTokenValue;
+import com.davnicwil.gimmetoken.token.storage.model.builder.ExpiringTokenValueBuilder;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
