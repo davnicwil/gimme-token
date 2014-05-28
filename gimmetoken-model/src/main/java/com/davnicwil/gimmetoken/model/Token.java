@@ -1,11 +1,15 @@
 package com.davnicwil.gimmetoken.model;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Token {
 
 	private String key;
 	private String value;
 
-	public Token(String key, String value) {
+	@JsonCreator
+	public Token(@JsonProperty("key") String key, @JsonProperty("value") String value) {
 		this.key = key;
 		this.value = value;
 	}
