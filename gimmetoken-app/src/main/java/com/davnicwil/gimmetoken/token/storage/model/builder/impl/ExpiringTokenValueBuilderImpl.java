@@ -4,6 +4,7 @@ import com.davnicwil.gimmetoken.crypto.RandomStringGenerator;
 import com.davnicwil.gimmetoken.time.Clock;
 import com.davnicwil.gimmetoken.token.storage.model.ExpiringTokenValue;
 import com.davnicwil.gimmetoken.token.storage.model.builder.ExpiringTokenValueBuilder;
+import com.google.inject.Inject;
 import com.google.inject.name.Named;
 
 public class ExpiringTokenValueBuilderImpl implements ExpiringTokenValueBuilder {
@@ -12,6 +13,7 @@ public class ExpiringTokenValueBuilderImpl implements ExpiringTokenValueBuilder 
 	private Clock clock;
 	private Long tokenExpiryMillis;
 	
+	@Inject
 	public ExpiringTokenValueBuilderImpl(RandomStringGenerator randomStringGenerator, 
 											Clock clock, 
 											@Named("token-value-expiry-duration-millis") Long tokenExpiryMillis) {
