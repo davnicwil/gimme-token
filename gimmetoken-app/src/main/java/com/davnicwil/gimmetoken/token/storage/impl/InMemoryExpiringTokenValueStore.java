@@ -9,7 +9,9 @@ import com.davnicwil.gimmetoken.token.storage.ExpiringTokenValueStore;
 import com.davnicwil.gimmetoken.token.storage.model.ExpiringTokenValue;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Maps;
+import com.google.inject.Singleton;
 
+@Singleton
 public class InMemoryExpiringTokenValueStore implements ExpiringTokenValueStore {
 
 	private Map<String, ExpiringTokenValue> tokens;
