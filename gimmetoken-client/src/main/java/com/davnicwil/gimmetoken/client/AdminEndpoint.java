@@ -3,10 +3,12 @@ package com.davnicwil.gimmetoken.client;
 import java.util.Set;
 
 import javax.ws.rs.GET;
-import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 
 @Path("/admin")
+@Produces(MediaType.APPLICATION_JSON)
 public interface AdminEndpoint {
 	
 	@GET
@@ -20,7 +22,7 @@ public interface AdminEndpoint {
 	@Path("/active")
 	Set<String> getAllNonExpiredTokens();
 	
-	@POST
+	@GET
 	@Path("/purge-expired")
 	void purgeExpiredTokens();
 }
