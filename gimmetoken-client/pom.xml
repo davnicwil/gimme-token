@@ -2,12 +2,12 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.davnicwil</groupId>
   <artifactId>gimmetoken-client</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>1.0</version>
   <dependencies>
     <dependency>
       <groupId>com.davnicwil</groupId>
       <artifactId>gimmetoken-model</artifactId>
-      <version>0.0.1-SNAPSHOT</version>
+      <version>1.0</version>
     </dependency>
     <dependency>
       <groupId>com.yammer.dropwizard</groupId>
