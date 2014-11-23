@@ -1,7 +1,7 @@
 http:
-  port: 10000
-  adminPort: 10001
-  
+  port: 9090
+  adminPort: 9091
+
 adminEnabled: true
-
-
+tokenLength: 64
+tokenValueExpiryDurationMillis: 30000
