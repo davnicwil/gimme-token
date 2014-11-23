@@ -2,6 +2,6 @@ http:
   port: 9090
   adminPort: 9091
 
-adminEnabled: true
+tokenAdminEnabled: true
 tokenLength: 64
 tokenValueExpiryDurationMillis: 30000

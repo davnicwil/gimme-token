@@ -26,7 +26,7 @@ public class App extends Service<AppConfiguration> {
 	private void setupResources(AppConfiguration configuration, Environment environment) {
 		Builder builder = new Builder(configuration);
 		environment.addResource(builder.build(TokenResource.class));
-		if(configuration.isAdminEnabled()) {
+		if(configuration.isTokenAdminEnabled()) {
 			environment.addResource(builder.build(AdminResource.class));
 		}
 	}
