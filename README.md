@@ -3,6 +3,23 @@ gimme-token
 
 A lightweight access token service, built in Java on top of DropWizard.
 
+what it does
+============
+
+A service which generates, authenticates and manages randomly and securely generated tokens for unique keys, with an http api. The service is intended for use behind the firewall (it is http only) as a microservice used by a larger application.
+
+The most likely use-case and the reason I built it was for use as an access-token generation and authentication service for unique user ids.
+
+The token values are random and securely generated, i.e. they can't reasonably be guessed if they are sufficiently long. The length of the generated token is configurable, defaulted to 32 characters. The tokens are comprised only from the digits 0-9 and english characters A-Z.
+
+The tokens expire after a configurable period of time, defaulted to 15 mins.
+
+The tokens are stored in-memory, and expired tokens persist until a new token is generated and activated for the same key (user), or the memory is freed up by calling an admin endpoint (documented below). It is up to the consuming application to decide how best to handle this freeing of memory, if it is necessary at all, depending on the number of expected keys in use, patterns of usage, and memory constraints (the memory footprint of each entry is very low, as it is just a String->String map entry in a Java Hashmap).
+
+The in memory storage of keys->tokens optimises lookup and write performance, and minimises operational complexity. Obviously, it means that all tokens will be lost if the service is restarted for whatever reason.
+
+When built, gimme-token is a single runnable jar with no dependencies and runs on a single thread.
+
 build
 =====
 
