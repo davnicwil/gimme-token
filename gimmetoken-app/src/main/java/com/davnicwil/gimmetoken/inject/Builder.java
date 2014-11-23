@@ -21,7 +21,7 @@ public class Builder {
 	}
 	
 	private Injector buildInjector(AppConfiguration configuration) {
-		return Guice.createInjector(new CryptoModule(),
+		return Guice.createInjector(new CryptoModule(configuration.getTokenLength()),
 									new TokenManagementModule(),
 									new TokenStorageModule(configuration.getTokenValueExpiryDurationMillis()),
 									new TimeModule());
