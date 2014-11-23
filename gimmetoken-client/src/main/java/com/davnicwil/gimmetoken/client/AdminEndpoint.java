@@ -6,6 +6,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 @Path("/admin")
 @Produces(MediaType.APPLICATION_JSON)
@@ -16,13 +17,13 @@ public interface AdminEndpoint {
 	
 	@GET
 	@Path("/expired")
-	Set<String> getAllExpiredTokens();
+	Set<String> getAllExpiredTokenKeys();
 	
 	@GET
 	@Path("/active")
-	Set<String> getAllNonExpiredTokens();
+	Set<String> getAllNonExpiredTokenKeys();
 	
 	@GET
 	@Path("/purge-expired")
-	void purgeExpiredTokens();
+	Response purgeExpiredTokens();
 }
