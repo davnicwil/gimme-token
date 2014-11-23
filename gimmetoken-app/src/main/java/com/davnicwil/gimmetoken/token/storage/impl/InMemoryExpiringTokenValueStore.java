@@ -1,6 +1,7 @@
 package com.davnicwil.gimmetoken.token.storage.impl;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
@@ -41,6 +42,14 @@ public class InMemoryExpiringTokenValueStore implements ExpiringTokenValueStore 
 	}
 
 	public Set<String> getKeys(Predicate<ExpiringTokenValue> filter) {
-		return Maps.filterValues(tokens, filter).keySet();
+		return clone(Maps.filterValues(tokens, filter).keySet());
+	}
+	
+	private Set<String> clone(Set<String> strings) {
+		Set<String> clone = new HashSet<String>();
+		for(String string: strings) {
+			clone.add(string);
+		}
+		return clone;
 	}
 }
