@@ -18,7 +18,7 @@ public interface TokenEndpoint {
 
 	@DELETE
 	@Path("/{id}")
-	Response remove(@PathParam("id") Long id);
+	Response removeAll(@PathParam("id") Long id);
 
 	@DELETE
 	@Path("/{id}/{token}")
