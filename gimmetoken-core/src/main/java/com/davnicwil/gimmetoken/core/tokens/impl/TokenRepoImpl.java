@@ -27,7 +27,7 @@ public class TokenRepoImpl implements TokenRepo {
 
     public void add(Long id, String token) { store.put(id, token); }
     public void remove(Long id, String token) { store.remove(id, token); }
-    public void wipe(Long id) { store.removeAll(id); }
+    public void removeAll(Long id) { store.removeAll(id); }
     public void wipe() { initStore(); }
 
     public Integer getNumberOfIds() { return store.keySet().size(); }

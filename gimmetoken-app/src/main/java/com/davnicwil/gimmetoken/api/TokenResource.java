@@ -5,6 +5,7 @@ import com.davnicwil.gimmetoken.client.TokenEndpoint;
 import com.davnicwil.gimmetoken.core.tokens.TokenRepo;
 import com.google.inject.Inject;
 
+import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Response;
 
 public class TokenResource implements TokenEndpoint {
@@ -26,5 +27,15 @@ public class TokenResource implements TokenEndpoint {
 
 	public Response authorise(Long id, String token) {
 		return tokenRepo.exists(id, token) ? Responses.OK : Responses.UNAUTHORISED;
+	}
+
+	public Response remove(Long id) {
+		tokenRepo.removeAll(id);
+		return Responses.OK;
+	}
+
+	public Response remove(Long id, String token) {
+		tokenRepo.remove(id, token);
+		return Responses.OK;
 	}
 }

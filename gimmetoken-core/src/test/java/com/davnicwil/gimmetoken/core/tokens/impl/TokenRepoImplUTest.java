@@ -102,7 +102,7 @@ public class TokenRepoImplUTest {
         IntStream.range(0 , 100).forEach(i -> assertTrue(testObj.exists(1l, tokens.get(i))));
 
         // remove them all
-        testObj.wipe(1l);
+        testObj.removeAll(1l);
 
         // check they're all removed
         IntStream.range(0 , 100).forEach(i -> assertFalse(testObj.exists(1l, tokens.get(i))));
@@ -134,7 +134,7 @@ public class TokenRepoImplUTest {
             Long thisId = new Long(i);
 
             // remove them all
-            testObj.wipe(thisId);
+            testObj.removeAll(thisId);
 
             // check they're all removed
             IntStream.range(0, 100).forEach(j -> assertFalse(testObj.exists(thisId, tokens.get(i).get(j))));
@@ -179,7 +179,7 @@ public class TokenRepoImplUTest {
         assertEquals(new Integer(60), testObj.getNumberOfTokens());
 
         // remove all from an id and check count reduces appropriately
-        testObj.wipe(2l);
+        testObj.removeAll(2l);
         assertEquals(new Integer(57), testObj.getNumberOfTokens());
     }
 
@@ -205,7 +205,7 @@ public class TokenRepoImplUTest {
         assertEquals(new Integer(5), testObj.getNumberOfIds());
 
         // remove all for one id, check count decreases by 1
-        testObj.wipe(1l);
+        testObj.removeAll(1l);
         assertEquals(new Integer(4), testObj.getNumberOfIds());
 
         // add a single token, then remove it, for a new id. Check the count increases then decreases by 1
@@ -215,7 +215,7 @@ public class TokenRepoImplUTest {
         assertEquals(new Integer(4), testObj.getNumberOfIds());
 
         // now remove all for a non existant id, check count remains the same
-        testObj.wipe(10l);
+        testObj.removeAll(10l);
         assertEquals(new Integer(4), testObj.getNumberOfIds());
 
         // now remove a non-existant token, check count remains the same
@@ -263,7 +263,7 @@ public class TokenRepoImplUTest {
         assertEquals(new Integer(1), testObj.getNumberOfTokens(3l));
 
         // remove all, check the count goes to 0
-        testObj.wipe(1l);
+        testObj.removeAll(1l);
         assertEquals(new Integer(0), testObj.getNumberOfTokens(1l));
     }
 
