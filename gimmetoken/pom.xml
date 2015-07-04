@@ -6,7 +6,6 @@
   <packaging>pom</packaging>
   
   <modules>
-    <module>../gimmetoken-model</module>
     <module>../gimmetoken-client</module>
     <module>../gimmetoken-app</module>
     <module>../gimmetoken-core</module>
