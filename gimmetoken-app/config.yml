@@ -1,5 +1,9 @@
-http:
-  port: 9090
-  adminPort: 9091
+server:
+  applicationConnectors:
+  - type: http
+    port: 9000
+  adminConnectors:
+  - type: http
+    port: 9001
 
 tokenLength: 64
