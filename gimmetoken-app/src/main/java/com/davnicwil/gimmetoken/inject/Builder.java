@@ -1,6 +1,7 @@
 package com.davnicwil.gimmetoken.inject;
 
 import com.davnicwil.gimmetoken.AppConfiguration;
+import com.davnicwil.time.guice.TimeModule;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 
@@ -17,6 +18,6 @@ public class Builder {
 	}
 	
 	private Injector buildInjector(AppConfiguration configuration) {
-		return Guice.createInjector(new AppModule(configuration.tokenLength));
+		return Guice.createInjector(new AppModule(configuration.tokenLength), new TimeModule());
 	}
 }

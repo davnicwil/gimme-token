@@ -22,12 +22,14 @@
     </dependency>
 
   	<!--
-  	If maven can't find com.davnicwil crypto, no worries, it's on github!
+  	If maven can't find the following dependencies, no worries, their source is on github!
 
-	To fix, clone the source and build, as per the commands below
+	Just clone the source and install, to add them to your local maven repo.
 
-  	> git clone https://github.com/davnicwil/crypto.git
-  	> cd ./crypto
+	Use something like these commands (bash)
+
+  	> git clone https://github.com/davnicwil/<artifact-id>.git
+  	> cd ./<artifact-id>
   	> mvn clean install
   	-->
   	<dependency>
@@ -35,6 +37,12 @@
 	  <artifactId>crypto</artifactId>
 	  <version>1.0</version>
 	</dependency>
+  	<dependency>
+	  <groupId>com.davnicwil</groupId>
+	  <artifactId>time</artifactId>
+	  <version>1.0</version>
+  	</dependency>
+  	<!-- end of dependencies with source on github -->
 
   	<dependency>
       <groupId>io.dropwizard</groupId>
@@ -50,8 +58,7 @@
     <dependency>
  	  <groupId>com.google.inject</groupId>
  	  <artifactId>guice</artifactId>
-	  <version>3.0</version>
-	  <classifier>no_aop</classifier>
+	  <version>4.0</version>
 	</dependency>
 	
 	<dependency>
