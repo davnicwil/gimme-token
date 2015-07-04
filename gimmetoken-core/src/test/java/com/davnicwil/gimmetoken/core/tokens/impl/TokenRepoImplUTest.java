@@ -3,7 +3,6 @@ package com.davnicwil.gimmetoken.core.tokens.impl;
 import com.davnicwil.gimmetoken.core.tokens.TokenRepo;
 import org.junit.Before;
 import org.junit.Test;
-import org.omg.CORBA.ARG_IN;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
@@ -103,7 +102,7 @@ public class TokenRepoImplUTest {
         IntStream.range(0 , 100).forEach(i -> assertTrue(testObj.exists(1l, tokens.get(i))));
 
         // remove them all
-        testObj.removeAll(1l);
+        testObj.wipe(1l);
 
         // check they're all removed
         IntStream.range(0 , 100).forEach(i -> assertFalse(testObj.exists(1l, tokens.get(i))));
@@ -135,7 +134,7 @@ public class TokenRepoImplUTest {
             Long thisId = new Long(i);
 
             // remove them all
-            testObj.removeAll(thisId);
+            testObj.wipe(thisId);
 
             // check they're all removed
             IntStream.range(0, 100).forEach(j -> assertFalse(testObj.exists(thisId, tokens.get(i).get(j))));
@@ -180,7 +179,7 @@ public class TokenRepoImplUTest {
         assertEquals(new Integer(60), testObj.getNumberOfTokens());
 
         // remove all from an id and check count reduces appropriately
-        testObj.removeAll(2l);
+        testObj.wipe(2l);
         assertEquals(new Integer(57), testObj.getNumberOfTokens());
     }
 
@@ -206,7 +205,7 @@ public class TokenRepoImplUTest {
         assertEquals(new Integer(5), testObj.getNumberOfIds());
 
         // remove all for one id, check count decreases by 1
-        testObj.removeAll(1l);
+        testObj.wipe(1l);
         assertEquals(new Integer(4), testObj.getNumberOfIds());
 
         // add a single token, then remove it, for a new id. Check the count increases then decreases by 1
@@ -216,7 +215,7 @@ public class TokenRepoImplUTest {
         assertEquals(new Integer(4), testObj.getNumberOfIds());
 
         // now remove all for a non existant id, check count remains the same
-        testObj.removeAll(10l);
+        testObj.wipe(10l);
         assertEquals(new Integer(4), testObj.getNumberOfIds());
 
         // now remove a non-existant token, check count remains the same
@@ -264,13 +263,51 @@ public class TokenRepoImplUTest {
         assertEquals(new Integer(1), testObj.getNumberOfTokens(3l));
 
         // remove all, check the count goes to 0
-        testObj.removeAll(1l);
+        testObj.wipe(1l);
         assertEquals(new Integer(0), testObj.getNumberOfTokens(1l));
     }
 
     @Test
     public void itShouldReportZeroTokensForANonExistantId() throws Exception {
         assertEquals(new Integer(0), testObj.getNumberOfTokens(1l));
+    }
+
+    @Test
+    public void itShouldRemoveEverythingWhenTheCommandIsGiven() {
+        // add some tokens for different ids, check the counts
+        testObj.add(1l, generateRandomToken());
+        testObj.add(1l, generateRandomToken());
+        testObj.add(1l, generateRandomToken());
+        testObj.add(1l, generateRandomToken());
+        testObj.add(1l, generateRandomToken());
+        assertEquals(new Integer(1), testObj.getNumberOfIds());
+        assertEquals(new Integer(5), testObj.getNumberOfTokens());
+        assertEquals(new Integer(5), testObj.getNumberOfTokens(1l));
+
+        testObj.add(2l, generateRandomToken());
+        testObj.add(2l, generateRandomToken());
+        testObj.add(2l, generateRandomToken());
+        assertEquals(new Integer(2), testObj.getNumberOfIds());
+        assertEquals(new Integer(8), testObj.getNumberOfTokens());
+        assertEquals(new Integer(3), testObj.getNumberOfTokens(2l));
+
+        testObj.add(3l, generateRandomToken());
+        testObj.add(3l, generateRandomToken());
+        testObj.add(3l, generateRandomToken());
+        testObj.add(3l, generateRandomToken());
+        testObj.add(3l, generateRandomToken());
+        testObj.add(3l, generateRandomToken());
+        assertEquals(new Integer(3), testObj.getNumberOfIds());
+        assertEquals(new Integer(14), testObj.getNumberOfTokens());
+        assertEquals(new Integer(6), testObj.getNumberOfTokens(3l));
+
+        // delete everything! nothing should remain
+        testObj.wipe();
+        assertEquals(new Integer(0), testObj.getNumberOfIds());
+        assertEquals(new Integer(0), testObj.getNumberOfTokens());
+        assertEquals(new Integer(0), testObj.getNumberOfTokens(1l));
+        assertEquals(new Integer(0), testObj.getNumberOfTokens(2l));
+        assertEquals(new Integer(0), testObj.getNumberOfTokens(3l));
     }
 
     private String generateRandomToken() {
