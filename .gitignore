@@ -5,3 +5,6 @@ gimmetoken-model/.classpath
 gimmetoken-model/.project
 gimmetoken/.settings/
 gimmetoken/.project
+*.iml
+gimmetoken/.idea
+gimmetoken-core/target

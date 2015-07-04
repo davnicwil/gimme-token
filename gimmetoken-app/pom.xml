@@ -4,6 +4,12 @@
   <artifactId>gimmetoken-app</artifactId>
   <version>1.0</version>
   <dependencies>
+
+    <dependency>
+	  <groupId>com.davnicwil</groupId>
+      <artifactId>gimmetoken-core</artifactId>
+	  <version>1.0</version>
+    </dependency>
     <dependency>
       <groupId>com.davnicwil</groupId>
       <artifactId>gimmetoken-model</artifactId>
@@ -14,20 +20,38 @@
       <artifactId>gimmetoken-client</artifactId>
       <version>1.0</version>
     </dependency>
+
+  	<!--
+  	If maven can't find com.davnicwil crypto, no worries, it's on github!
+
+	To fix, clone the source and build, as per the commands below
+
+  	> git clone https://github.com/davnicwil/crypto.git
+  	> cd ./crypto
+  	> mvn clean install
+  	-->
   	<dependency>
-      <groupId>com.yammer.dropwizard</groupId>
+	  <groupId>com.davnicwil</groupId>
+	  <artifactId>crypto</artifactId>
+	  <version>1.0</version>
+	</dependency>
+
+  	<dependency>
+      <groupId>io.dropwizard</groupId>
       <artifactId>dropwizard-core</artifactId>
-      <version>0.6.2</version>
+      <version>0.7.1</version>
     </dependency>
     <dependency>
-      <groupId>com.yammer.dropwizard</groupId>
+      <groupId>io.dropwizard</groupId>
       <artifactId>dropwizard-client</artifactId>
-      <version>0.6.2</version>
+      <version>0.7.1</version>
     </dependency>
+
     <dependency>
  	  <groupId>com.google.inject</groupId>
  	  <artifactId>guice</artifactId>
 	  <version>3.0</version>
+	  <classifier>no_aop</classifier>
 	</dependency>
 	
 	<dependency>
@@ -35,13 +59,13 @@
       <artifactId>junit</artifactId>
       <version>4.11</version>
       <scope>test</scope>
-    </dependency> 
-    
+    </dependency>
     <dependency>
 	  <groupId>org.mockito</groupId>
 	  <artifactId>mockito-all</artifactId>
 	  <version>1.9.5</version>
 	</dependency>
+
   </dependencies>
   <build>
   	<plugins>

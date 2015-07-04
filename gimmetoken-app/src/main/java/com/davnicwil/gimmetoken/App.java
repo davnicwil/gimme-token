@@ -1,33 +1,20 @@
 package com.davnicwil.gimmetoken;
 
+import com.davnicwil.gimmetoken.api.AdminResource;
+import com.davnicwil.gimmetoken.api.TokenResource;
 import com.davnicwil.gimmetoken.inject.Builder;
-import com.davnicwil.gimmetoken.resource.AdminResource;
-import com.davnicwil.gimmetoken.resource.TokenResource;
-import com.yammer.dropwizard.Service;
-import com.yammer.dropwizard.config.Bootstrap;
-import com.yammer.dropwizard.config.Environment;
+import io.dropwizard.Application;
+import io.dropwizard.setup.Bootstrap;
+import io.dropwizard.setup.Environment;
 
-public class App extends Service<AppConfiguration> {
+public class App extends Application<AppConfiguration> {
 
-	public static final void main(String[] args) throws Exception {
-		new App().run(args);
-	}
-	
-	@Override
-	public void initialize(Bootstrap<AppConfiguration> bootstrap) {
-		bootstrap.setName("gimmetoken-app");
-	}
+	public static final void main(String[] args) throws Exception { new App().run(args); }
+	public void initialize(Bootstrap<AppConfiguration> bootstrap) {}
 
-	@Override
 	public void run(AppConfiguration configuration, Environment environment) throws Exception {
-		setupResources(configuration, environment);
-	}
-
-	private void setupResources(AppConfiguration configuration, Environment environment) {
-		Builder builder = new Builder(configuration);
-		environment.addResource(builder.build(TokenResource.class));
-		if(configuration.isTokenAdminEnabled()) {
-			environment.addResource(builder.build(AdminResource.class));
-		}
+		Builder resourceBuilder = new Builder(configuration);
+		environment.jersey().register(resourceBuilder.build(TokenResource.class));
+		environment.jersey().register(resourceBuilder.build(AdminResource.class));
 	}
 }
