@@ -2,7 +2,7 @@ package com.davnicwil.gimmetoken;
 
 import com.davnicwil.gimmetoken.api.AdminResource;
 import com.davnicwil.gimmetoken.api.TokenResource;
-import com.davnicwil.gimmetoken.inject.Builder;
+import com.davnicwil.gimmetoken.guice.Builder;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;

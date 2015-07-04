@@ -4,8 +4,9 @@ import com.davnicwil.gimmetoken.core.tokens.TokenRepo;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimaps;
 import com.google.common.collect.SetMultimap;
+import com.google.inject.Singleton;
 
-
+@Singleton
 public class TokenRepoImpl implements TokenRepo {
 
     private SetMultimap<Long, String> store;
