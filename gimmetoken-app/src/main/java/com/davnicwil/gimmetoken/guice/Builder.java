@@ -20,6 +20,6 @@ public class Builder {
 	}
 	
 	private Injector buildInjector(AppConfiguration configuration) {
-		return Guice.createInjector(new GimmeTokenCoreModule(), new CryptoModule(configuration.tokenLength), new TimeModule());
+		return Guice.createInjector(new AppModule(configuration.tokenLength), new GimmeTokenCoreModule(), new CryptoModule(), new TimeModule());
 	}
 }
