@@ -15,15 +15,15 @@ public interface TokenEndpoint {
 	@Path("/{id}")
 	Response add(@PathParam("id") Long id);
 
-	@GET
-	@Path("/{id}/{token}")
-	Response authorise(@PathParam("id") Long id, @PathParam("token") String token);
+	@POST
+	@Path("/authorise/{id}")
+	Response authorise(@PathParam("id") Long id, TokenBody tokenBody);
 
 	@POST
-	@Path("/remove/{id}")
+	@Path("/remove-all/{id}")
 	Response removeAll(@PathParam("id") Long id);
 
 	@POST
-	@Path("/remove/{id}/{token}")
+	@Path("/remove/{id}")
 	Response remove(@PathParam("id") Long id, TokenBody payload);
 }

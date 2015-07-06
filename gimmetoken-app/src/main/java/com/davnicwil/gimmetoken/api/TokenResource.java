@@ -28,8 +28,8 @@ public class TokenResource implements TokenEndpoint {
 		return Responses.CREATED(new TokenBody(token));
 	}
 
-	public Response authorise(Long id, String token) {
-		return tokenRepo.exists(id, token) ? Responses.OK : Responses.UNAUTHORISED;
+	public Response authorise(Long id, TokenBody payload) {
+		return tokenRepo.exists(id, payload.authToken) ? Responses.OK : Responses.UNAUTHORISED;
 	}
 
 	public Response removeAll(Long id) {
