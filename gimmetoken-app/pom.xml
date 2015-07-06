@@ -15,6 +15,11 @@
       <artifactId>gimmetoken-client</artifactId>
       <version>1.0</version>
     </dependency>
+  	<dependency>
+	  <groupId>com.davnicwil</groupId>
+	  <artifactId>gimmetoken-model</artifactId>
+	  <version>1.0</version>
+  	</dependency>
 
   	<!--
   	If maven can't find the following dependencies, no worries, their source is on github!

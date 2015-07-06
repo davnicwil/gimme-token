@@ -1,5 +1,7 @@
 package com.davnicwil.gimmetoken.client;
 
+import com.davnicwil.gimmetoken.model.TokenBody;
+
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -16,11 +18,11 @@ public interface TokenEndpoint {
 	@Path("/{id}/{token}")
 	Response authorise(@PathParam("id") Long id, @PathParam("token") String token);
 
-	@DELETE
-	@Path("/{id}")
+	@POST
+	@Path("/remove/{id}")
 	Response removeAll(@PathParam("id") Long id);
 
-	@DELETE
-	@Path("/{id}/{token}")
-	Response remove(@PathParam("id") Long id, @PathParam("token") String token);
+	@POST
+	@Path("/remove/{id}/{token}")
+	Response remove(@PathParam("id") Long id, TokenBody payload);
 }

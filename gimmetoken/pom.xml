@@ -9,6 +9,7 @@
     <module>../gimmetoken-client</module>
     <module>../gimmetoken-app</module>
     <module>../gimmetoken-core</module>
+    <module>../gimmetoken-model</module>
   </modules>
   
 </project>

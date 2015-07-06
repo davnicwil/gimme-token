@@ -8,3 +8,5 @@ gimmetoken/.project
 *.iml
 gimmetoken/.idea
 gimmetoken-core/target
+.idea
+gimmetoken-model/target

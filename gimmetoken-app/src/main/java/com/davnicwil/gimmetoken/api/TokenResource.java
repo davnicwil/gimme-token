@@ -3,6 +3,7 @@ package com.davnicwil.gimmetoken.api;
 import com.davnicwil.crypto.RandomStringGenerator;
 import com.davnicwil.gimmetoken.client.TokenEndpoint;
 import com.davnicwil.gimmetoken.core.tokens.TokenRepo;
+import com.davnicwil.gimmetoken.model.TokenBody;
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
 
@@ -22,9 +23,9 @@ public class TokenResource implements TokenEndpoint {
 	}
 
 	public Response add(Long id) {
-		String newToken = randomStringGenerator.generate(tokenLength);
-		tokenRepo.add(id, newToken);
-		return Responses.CREATED(newToken);
+		String token = randomStringGenerator.generate(tokenLength);
+		tokenRepo.add(id, token);
+		return Responses.CREATED(new TokenBody(token));
 	}
 
 	public Response authorise(Long id, String token) {
@@ -36,8 +37,8 @@ public class TokenResource implements TokenEndpoint {
 		return Responses.OK;
 	}
 
-	public Response remove(Long id, String token) {
-		tokenRepo.remove(id, token);
+	public Response remove(Long id, TokenBody payload) {
+		tokenRepo.remove(id, payload.authToken);
 		return Responses.OK;
 	}
 }
