@@ -6,6 +6,7 @@ import javax.ws.rs.core.Response;
 
 @Path("/admin")
 @Produces(MediaType.APPLICATION_JSON)
+@Consumes(MediaType.APPLICATION_JSON)
 public interface AdminEndpoint {
 	
 	@GET
